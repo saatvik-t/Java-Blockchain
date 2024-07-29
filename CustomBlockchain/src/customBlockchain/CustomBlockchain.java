@@ -1,8 +1,10 @@
+package customBlockchain;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 
-public class Java_BlockChain {
+public class CustomBlockchain {
     public static class block {
         public String hash;
         public String previousHash;
@@ -62,6 +64,6 @@ public class Java_BlockChain {
         if (isValid(blockChain))
             System.out.println("The Block Chain is Valid !");
         else
-            System.out.println("The Block Chain is Corrupted !");
+            System.out.println("The Block Chain is Compromised !");
     }
 }
