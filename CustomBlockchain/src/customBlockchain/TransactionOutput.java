@@ -1,4 +1,4 @@
-package customBlockchain;
+package CustomBlockchain.src.customBlockchain;
 
 import java.security.PublicKey;
 

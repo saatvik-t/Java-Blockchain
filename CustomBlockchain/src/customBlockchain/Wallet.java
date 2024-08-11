@@ -1,16 +1,13 @@
-package customBlockchain;
+package CustomBlockchain.src.customBlockchain;
 
+import java.util.*;
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Wallet {
 
     public PrivateKey privateKey;
     public PublicKey publicKey;
-
     public HashMap<String,TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();
 
     public Wallet() {
@@ -24,7 +21,9 @@ public class Wallet {
             ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
             KeyPair keyPair = keyGen.generateKeyPair();
             privateKey = keyPair.getPrivate();
+            System.out.println("Private Key : " + privateKey);
             publicKey = keyPair.getPublic();
+            System.out.println("Public Key : " + publicKey);
 
         }catch(Exception e) {
             throw new RuntimeException(e);
@@ -55,7 +54,8 @@ public class Wallet {
             TransactionOutput UTXO = item.getValue();
             total += UTXO.value;
             inputs.add(new TransactionInput(UTXO.id));
-            if(total > value) break;
+            if(total > value)
+                break;
         }
 
         Transaction newTransaction = new Transaction(publicKey, _recipient , value, inputs);

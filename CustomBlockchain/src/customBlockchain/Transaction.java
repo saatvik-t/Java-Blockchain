@@ -1,7 +1,7 @@
-package customBlockchain;
+package CustomBlockchain.src.customBlockchain;
 
+import java.util.*;
 import java.security.*;
-import java.util.ArrayList;
 
 public class Transaction {
     public String transactionId;
@@ -9,13 +9,12 @@ public class Transaction {
     public PublicKey recipient;
     public float value;
     public byte[] signature;
-
     public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
     public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
 
     private static int sequence = 0;
 
-    public Transaction(PublicKey from, PublicKey to, float value,  ArrayList<TransactionInput> inputs) {
+    public Transaction(PublicKey from, PublicKey to, float value, ArrayList<TransactionInput> inputs) {
         this.sender = from;
         this.recipient = to;
         this.value = value;
@@ -25,7 +24,7 @@ public class Transaction {
     public boolean processTransaction() {
 
         if(! verifySignature()) {
-            System.out.println("#Transaction Signature failed to verify");
+            System.out.println("Transaction Signature failed to verify");
             return false;
         }
 
@@ -34,7 +33,7 @@ public class Transaction {
         }
 
         if(getInputsValue() < CustomBlockchain.minimumTransaction) {
-            System.out.println("Transaction Inputs too small: " + getInputsValue());
+            System.out.println("Transaction Input too small: " + getInputsValue());
             System.out.println("Please enter the amount greater than " + CustomBlockchain.minimumTransaction);
             return false;
         }
@@ -49,7 +48,7 @@ public class Transaction {
         }
 
         for(TransactionInput i : inputs) {
-            if(i.UTXO == null) continue; //if Transaction can't be found skip it
+            if(i.UTXO == null) continue;
             CustomBlockchain.UTXOs.remove(i.UTXO.id);
         }
 
@@ -59,7 +58,7 @@ public class Transaction {
     public float getInputsValue() {
         float total = 0;
         for(TransactionInput i : inputs) {
-            if(i.UTXO == null) continue; // if Transaction can't be found, then skip it. This behavior may not be optimal.
+            if(i.UTXO == null) continue;
             total += i.UTXO.value;
         }
         return total;
