@@ -1,18 +1,50 @@
 # Java Blockchain
 
-This Java program demonstrates a simple implementation of a blockchain using SHA-256 for hashing. The blockchain is a distributed and immutable data structure commonly used for secure data storage and integrity verification in cryptocurrencies like Bitcoin.
+This project is a basic implementation of a blockchain system in Java with functionalities for managing wallets, transactions, and blocks. It replicates a cryptocurrency ecosystem, allowing users to create wallets, conduct transactions, mine blocks, and validate the blockchain.
 
 
 ## Features
 
-- The blockchain is implemented as a series of connected blocks, where each block contains data and a reference (hash) to the previous block.
-- This chain-like structure ensures the integrity of the data, as changing the content of any block would invalidate all subsequent blocks.
-- The block class represents an individual block in the blockchain.
-- SHA-256 is a widely used cryptographic hash function that produces a 256-bit (32-byte) hash value.
-- The applySha256 method uses the SHA-256 algorithm to compute the hash of a given input string.
+- **Wallet Management**: Create and manage digital wallets using private and public keys.
+- **Transactions**: Send and receive funds using wallets.
+- **Blocks and Mining**: Add transactions to blocks and mine blocks with proof-of-work.
+- **Blockchain Validation**: Ensure the integrity of the blockchain by validating blocks and transactions.
+
+
+## Project Structure
+
+- `Block.java`: Defines the Block class, representing a block in the blockchain. It includes methods for calculating the block's hash and mining the block.
+- `StringUtil.java`: Provides functions for cryptographic operations, such as SHA-256 hashing and ECDSA signatures.
+- `Transaction.java`: Represents a transaction, including inputs, outputs, and methods for generating and verifying signatures.
+- `TransactionInput.java`: Defines the input for a transaction, referencing previous transaction outputs.
+- `TransactionOutput.java`: Defines the output for a transaction, including the recipient, value, and unique identifier.
+- `Wallet.java`: Defines a digital wallet, including key generation, balance retrieval, and sending funds.
+- `CustomBlockchain.java`: Contains the main blockchain logic, including blockchain initialization, block mining, and validation.
 
 
 ## Demo
 
-![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/Screenshot%202023-07-27%20152115.png)
+#### Wallet Initialization
 
+- `WalletA` and `WalletB` are created and initialized with private and public keys.
+- `coinbase` wallet is used to generate the initial transaction.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/1_Screenshot%202024-08-16%20161541.png)
+
+#### Genesis Block
+
+- The `genesis block` is created with an initial transaction of $100 from `coinbase` to `WalletA`.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/2_Screenshot%202024-08-11%20183940.png)
+
+#### Transactions
+
+- `WalletA` sends $25.7 to `WalletB`.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/3_Screenshot%202024-08-11%20183940.png)
+- `WalletA` attempts to send $100 to `WalletB`, which fails as the balance is insufficient.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/4_Screenshot%202024-08-11%20183951.png)
+- `WalletB` sends $20.3 units  to `WalletA`.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/5_Screenshot%202024-08-11%20183951.png)
+
+#### Blockchain Validation
+
+The blockchain is validated to ensure correctness and integrity.
+![Screenshot](https://github.com/saatvik-t/Java-Blockchain/blob/master/assets/6_Screenshot%202024-08-11%20183951.png)
