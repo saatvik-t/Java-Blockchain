@@ -1,4 +1,4 @@
-package CustomBlockchain.src.customBlockchain;
+package customBlockchain;
 
 import java.util.*;
 

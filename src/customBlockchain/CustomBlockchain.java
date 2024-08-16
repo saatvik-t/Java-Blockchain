@@ -1,4 +1,4 @@
-package CustomBlockchain.src.customBlockchain;
+package customBlockchain;
 
 import java.security.Security;
 import java.util.ArrayList;
@@ -22,7 +22,6 @@ public class CustomBlockchain {
         walletA = new Wallet();
         System.out.println("WalletB : Instantiation of the class Wallet");
         walletB = new Wallet();
-        System.out.println("WalletB's balance : " + walletB.getBalance());
         System.out.println("coinbase : Instantiation of the class Wallet");
         Wallet coinbase = new Wallet();
 

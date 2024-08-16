@@ -1,4 +1,4 @@
-package CustomBlockchain.src.customBlockchain;
+package customBlockchain;
 
 public class TransactionInput {
     public String transactionOutputId;
